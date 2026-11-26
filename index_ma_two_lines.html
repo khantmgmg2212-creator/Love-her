@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>စိတ်ဆိုးပြေပါနော် 💗</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;overflow:hidden;font-family:system-ui,"Noto Sans Myanmar",sans-serif;background:linear-gradient(135deg,#ffe1ec,#f4e5ff,#fff0d9);color:#633b59}
+.card{width:min(100%,430px);min-height:460px;padding:30px 22px;text-align:center;background:rgba(255,255,255,.9);border:2px solid white;border-radius:28px;box-shadow:0 18px 55px #a05b8b30}
+.heart{font-size:58px;animation:beat 1s infinite}@keyframes beat{50%{transform:scale(1.13)}}
+h1{font-size:clamp(23px,6vw,30px);margin:12px 0;color:#d65391}p{line-height:1.9;font-size:16px}
+#coax{min-height:58px;margin:15px 0 4px;padding:12px;border-radius:16px;background:#fff0f6;color:#c04483;line-height:1.8;font-size:15px}
+.buttons{position:relative;height:135px;margin-top:14px;display:flex;justify-content:center;align-items:center;gap:12px}
+button{border:0;border-radius:999px;padding:13px 17px;font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 6px 15px #82416926;white-space:nowrap;touch-action:manipulation}
+#yes{background:#ff78ad;color:white}#no{background:#eee4f4;color:#805d83;position:absolute;left:57%;top:70px;transition:left .15s,top .15s}
+#success{display:none;margin-top:12px;padding:14px;border-radius:16px;background:#fff0f6;color:#c04483;line-height:1.8}.small{font-size:12px;opacity:.7;margin-top:18px}
+</style>
+</head>
+<body>
+<main class="card">
+<div class="heart">💗</div>
+<h1>စိတ်ဆိုးပြေပါနော် 🥺</h1>
+<p>မောင့်ကြောင့် စိတ်မကောင်းဖြစ်သွားရင် တကယ်တောင်းပန်ပါတယ်နော်။<br>မပြေသေးလည်း ရပါတယ်၊ မ စိတ်ပြေတဲ့အထိ မောင်ချော့နေမယ် 💗</p>
+<div id="coax">တစ်ခါလောက်တော့ မောင့်ကို ခွင့်လွှတ်ပေးပါနော် 🥺</div>
+<div class="buttons" id="buttonArea">
+<button id="yes">စိတ်ဆိုးပြေပြီ 💕</button>
+<button id="no">မပြေသေးဘူး 🙄</button>
+</div>
+<div id="success">ဝမ်းသာလိုက်တာ 🥹💗<br>ပြန်ပြုံးပေးလို့ ကျေးဇူးပါနော်။ နောက်တစ်ခါ ပိုဂရုစိုက်ပါ့မယ်။ 🌷</div>
+<div class="small">မအတွက် သီးသန့်လုပ်ထားတဲ့ စာမျက်နှာလေးပါ 💌</div>
+</main>
+<script>
+const noBtn=document.getElementById('no'),area=document.getElementById('buttonArea'),coax=document.getElementById('coax');
+const yesBtn=document.getElementById('yes'),success=document.getElementById('success');
+const sweetWords=[
+'အဲ့လောက်လေးတော့ စိတ်မဆိုးပါနဲ့နော်… မောင်တကယ်တောင်းပန်ပါတယ် 🥺',
+'မပြုံးတာလေးကို ပြန်မြင်ချင်လို့ပါ။ စိတ်ပြေတဲ့အထိ စောင့်ပေးမယ်နော် 💗',
+'မောင်မှားခဲ့တာကို နားလည်ပါတယ်။ နောက်တစ်ခါ ထပ်မဖြစ်အောင် သတိထားပါ့မယ် 🌷',
+'စိတ်ဆိုးနေလည်း ရပါတယ်၊ ဒါပေမဲ့ မောင့်တောင်းပန်စကားလေးတော့ နားထောင်ပေးပါနော် 🥹',
+'မကို စိတ်ညစ်စေချင်တာ မဟုတ်ပါဘူး။ တကယ်စိတ်ရင်းနဲ့ တောင်းပန်တာပါ 💞',
+'အခုချက်ချင်း မပြေသေးလည်း ရပါတယ်။ မောင့်ကို အခွင့်အရေးလေးတစ်ခုပေးပါနော် 💐',
+'မစိတ်ပြေဖို့ ဘာလုပ်ပေးရမလဲ ပြောပါနော်။ မောင်နားထောင်ပေးမယ် 💕'
+];
+let i=0;
+let shrink=1;
+function runAway(){
+ const maxX=Math.max(0,area.clientWidth-noBtn.offsetWidth),maxY=Math.max(0,area.clientHeight-noBtn.offsetHeight);
+ noBtn.style.left=Math.random()*maxX+'px';noBtn.style.top=Math.random()*maxY+'px';
+ shrink=Math.max(0.4,shrink-0.08);
+ noBtn.style.transform='scale('+shrink+')';
+ coax.textContent=sweetWords[i%sweetWords.length];i++;
+}
+noBtn.addEventListener('pointerenter',runAway);
+noBtn.addEventListener('click',e=>{e.preventDefault();runAway()});
+noBtn.addEventListener('touchstart',e=>{e.preventDefault();runAway()},{passive:false});
+yesBtn.addEventListener('click',()=>{
+ success.style.display='block';coax.textContent='စိတ်ပြေသွားပြီဆိုတော့ မောင်အရမ်းဝမ်းသာတယ်နော် 💖';yesBtn.textContent='ချစ်တယ်နော် 💖';
+});
+</script>
+</body>
+</html>
